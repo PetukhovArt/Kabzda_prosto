@@ -1,12 +1,15 @@
 import React from 'react';
-import {AccordionTitleContent} from './AccordionTitleContent';
 
 type AccordionTitleType={
     title: string
+    collapsed: boolean
+    onChange:()=>void
 }
 
 export function AccordionTitle(props:AccordionTitleType) {
     return (
-        <AccordionTitleContent title={props.title}/>
+        <h3 onClick={props.onChange}>
+            ---{props.title}---
+        </h3>
     );
 }
