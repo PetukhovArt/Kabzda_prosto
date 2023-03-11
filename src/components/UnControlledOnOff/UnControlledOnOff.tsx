@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 
 type PropsType = {
     onChange: (on: boolean) => void
+    defaultOn?: boolean
 }
 
-export function UnControlledOnOff(props: any) {
-    let [on, setOn] = useState(false)
+export function UnControlledOnOff(props: PropsType) {
+    let [on, setOn] = useState(props.defaultOn? props.defaultOn : false)
 
     const OnStyleButton = {
         display: 'flex',

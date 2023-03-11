@@ -5,7 +5,7 @@ export type OnOffPropsType = {
     onChange: (value:boolean)=> void
 }
 
-export function ControlledOnOff(props: OnOffPropsType) {
+export function OnOff(props: OnOffPropsType) {
 
     const OnStyleButton = {
         display: "flex",
