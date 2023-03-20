@@ -1,0 +1,80 @@
+body {
+    font-family: BlinkMacSystemFont;
+}
+
+:root {
+    --background-gradient: linear-gradient(30deg, #34495e 30%, darkslateblue);
+    --gray: #34495e;
+    --darkgray: #2c3e50;
+}
+
+.title {
+    font-weight: bold;
+    position: relative;
+    padding: 0 1em;
+    color: #fff;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 10em;
+    height: 2.5em;
+    border-radius: .25em;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+/* Arrow */
+.title::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.7em;
+    background-color: var(--gray);
+    transition: .3s all ease;
+    pointer-events: none;
+}
+
+.title:hover::after {
+    background: var(--background-gradient);
+    color: antiquewhite;
+    transition: 0.3s;
+}
+
+.option {
+    margin-bottom: 0.5px;
+    color: white;
+    text-decoration: none;
+    padding: .25em;
+    border-radius: .25em;
+    background: var(--background-gradient);
+    padding: 0 1em;
+    cursor: pointer;
+    width: 9.5em;
+    height: 2.5em;
+    border-radius: .25em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+/*.option:hover {*/
+/*    background: blue;*/
+/*}*/
+
+.optionsWrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0.5em;
+
+}
+.wrapper {
+    position: relative;
+}
+.selected {
+    background: blue;
+}
+

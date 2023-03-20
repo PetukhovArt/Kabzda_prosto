@@ -3,7 +3,7 @@ import {ComponentStory, ComponentMeta, Story} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {Accordion, AccPropsType} from './Accordion';
 
-const GetCategoryObj=(categoryName: string)=> ({
+const GetCategoryObj = (categoryName: string) => ({
     table: {category: categoryName}
 })
 
@@ -20,14 +20,21 @@ export default {
         }
     }
 }
-
+const names = [
+    {id: 1, name: 'Pavel'},
+    {id: 2, name: 'Artem'},
+    {id: 3, name: 'Denis'},
+    {id: 4, name: 'Sasha'},
+    {id: 5, name: 'Gregory'},
+]
 const callBack = action('accordion mode change event fired')
+const onClickCallBack = action('Some item was clicked')
 const Template: Story<AccPropsType> = args => <Accordion {...args} />;
+
 const callBackProps = {
-    /**
-     * Callback that is called when Menu is clicked
-     */
     onChange: callBack,
+    onClickCallBack: onClickCallBack,
+    names: names,
     //etc. for destructing props on body
 }
 
@@ -48,7 +55,12 @@ MenuUnCollapsedMode.args = {
 export const ModeChanging: Story<AccPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true)
 
-    return <Accordion {...args} collapsed={value} onChange={() => setValue(!value)}/>
+    return <Accordion {...args}
+                      collapsed={value}
+                      onChange={() => setValue(!value)}
+                      names={names}
+                      onClickCallBack={onClickCallBack}
+    />
 }
 ModeChanging.args = {
     title: 'Users',

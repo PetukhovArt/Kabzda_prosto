@@ -6,10 +6,9 @@ export type AccPropsType={
     title: string
     collapsed: boolean
     onChange:()=>void
-    /**
-     * optional color of header text
-     */
-    color?: string
+    color: string
+    names: {id: number, name: string}[]
+    onClickCallBack: (id: number)=> void
 }
 
 export function Accordion(props:AccPropsType) {
@@ -22,7 +21,12 @@ export function Accordion(props:AccPropsType) {
                             collapsed={props.collapsed}
                             onChange={props.onChange}
             />
-            {!props.collapsed && <AccordionBody/>}
+            {!props.collapsed &&
+                <AccordionBody
+                    names={props.names}
+                    onClickCallBack={props.onClickCallBack}
+            />
+            }
         </div>
     );
 }
