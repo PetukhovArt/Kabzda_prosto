@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {ComponentStory, ComponentMeta, Story} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
-import {Accordion, AccPropsType} from './Accordion';
 import {Accordion, Accordion_memo, AccPropsType} from './Accordion';
 
 const GetCategoryObj = (categoryName: string) => ({
