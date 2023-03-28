@@ -1,6 +1,6 @@
 import React from 'react';
-import {AccordionTitle} from './AccordionTitle';
-import {AccordionBody} from './AccordionBody';
+import {AccordionTitle, AccordionTitle_memo} from './AccordionTitle';
+import {AccordionBody, AccordionBody_memo} from './AccordionBody';
 
 export type AccPropsType={
     title: string
@@ -16,13 +16,13 @@ export function Accordion(props:AccPropsType) {
 
     return (
         <div>
-            <AccordionTitle title={props.title}
+            <AccordionTitle_memo title={props.title}
                             color={props.color}
                             collapsed={props.collapsed}
                             onChange={props.onChange}
             />
             {!props.collapsed &&
-                <AccordionBody
+                <AccordionBody_memo
                     names={props.names}
                     onClickCallBack={props.onClickCallBack}
             />
@@ -30,4 +30,5 @@ export function Accordion(props:AccPropsType) {
         </div>
     );
 }
+export const Accordion_memo = React.memo(Accordion) // adds NO rerender for Table, if no changes in state/props (optimization)
 

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {AccordionTitle} from '../Accordion/AccordionTitle';
 
 export type OnOffPropsType = {
     on: boolean
@@ -50,6 +51,8 @@ export function OnOff(props: OnOffPropsType) {
         </>
     )
 }
+export const OnOff_memo = React.memo(OnOff) // adds NO rerender for Table, if no changes in state/props (optimization)
+
 
 
 

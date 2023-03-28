@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {action} from '@storybook/addon-actions';
-import {Select, SelectPropsType} from './Select';
+import {Select, Select_memo, SelectPropsType} from './Select';
 import {Story} from '@storybook/react';
 
 const GetCategoryObj = (categoryName: string) => ({
     table: {category: categoryName}
 })
 export default {
-    title: 'Components/Select',
-    component: Select,
+    title: 'Components/Select_memo',
+    component: Select_memo,
     argTypes: {
         onChange: {
             ...GetCategoryObj('events')
@@ -17,11 +17,11 @@ export default {
 }
 
 const items = [
-    {id: 1, name: 'Artem'},
-    {id: 2, name: 'Pavel'},
-    {id: 3, name: 'Denis'},
-    {id: 4, name: 'Sasha'},
-    {id: 5, name: 'Nikolay'},
+    {id: 1, name: 'Artem', country: 'Russia', age: 32},
+    {id: 2, name: 'Pavel', country: 'Russia', age: 33},
+    {id: 3, name: 'Denis', country: 'Bulgaria', age: 29},
+    {id: 4, name: 'Sasha', country: 'Belarus', age: 28},
+    {id: 5, name: 'Nikolay', country: 'Belarus', age: 31},
 ]
 
 const onClickCallBack = action('Some item was clicked')
@@ -34,10 +34,12 @@ const callBackProps = {
 }
 
 export const BaseSelectModeChanging: Story<SelectPropsType> = (args) => {
+
     const [collapsed, setCollapsed] = useState<boolean>(false)
     const [value, setValue] = useState<string>(items[0].name)
+
     return (
-        <Select {...args}
+        <Select_memo {...args}
                 value={value}
                 setValue={setValue}
                 collapsed={collapsed}

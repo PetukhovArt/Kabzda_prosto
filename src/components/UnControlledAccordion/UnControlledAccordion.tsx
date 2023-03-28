@@ -10,18 +10,19 @@ type AccordionPropsType={
 
 export function UnControlledAccordion(props:AccordionPropsType) {
 
-    const [collapsed,dispatch]=useReducer(reducer, false);
+    let [state,dispatch]= useReducer (reducer, {collapsed: false});
 
     return (
         <div>
             <AccordionTitle
                 title={props.title}
                 dispatch={dispatch}
-                collapsed={collapsed}
+                collapsed={state.collapsed}
             />
-            {!collapsed && <AccordionBody/>}
+            {!state.collapsed && <AccordionBody/>}
         </div>
     );
 }
+export const UnControlledAccordion_memo=React.memo(UnControlledAccordion)
 
 

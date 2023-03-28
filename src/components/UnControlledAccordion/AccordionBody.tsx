@@ -9,3 +9,4 @@ export function AccordionBody() {
             </ul>
     );
 }
+export const AccordionBody_memo=React.memo(AccordionBody)

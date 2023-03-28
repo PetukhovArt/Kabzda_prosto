@@ -1,4 +1,5 @@
 import React from 'react';
+import {Accordion} from './Accordion';
 
 type BodyPropsType = {
     names?: {id: number, name: string}[]
@@ -19,3 +20,4 @@ export function AccordionBody(props: BodyPropsType) {
             </ul>
     );
 }
+export const AccordionBody_memo = React.memo(AccordionBody) // adds NO rerender for Table, if no changes in state/props (optimization)

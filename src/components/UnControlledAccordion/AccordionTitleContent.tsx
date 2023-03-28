@@ -1,5 +1,6 @@
 import React, {Dispatch} from 'react';
 import {ActionType} from './reducer';
+import {AccordionTitle} from './AccordionTitle';
 
 
 type AccordionTitleContentType = {
@@ -17,3 +18,4 @@ export function AccordionTitleContent(props: AccordionTitleContentType) {
         </button>
     );
 }
+export const AccordionTitleContent_memo=React.memo(AccordionTitleContent)

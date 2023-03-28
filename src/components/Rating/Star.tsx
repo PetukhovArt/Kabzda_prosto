@@ -17,6 +17,7 @@ export function Star(props: StarPropsType) {
         </button>
     )
 }
+export const Star_memo=React.memo(Star)
 
 
 

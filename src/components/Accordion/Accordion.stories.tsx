@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ComponentStory, ComponentMeta, Story} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {Accordion, AccPropsType} from './Accordion';
+import {Accordion, Accordion_memo, AccPropsType} from './Accordion';
 
 const GetCategoryObj = (categoryName: string) => ({
     table: {category: categoryName}
@@ -9,7 +10,7 @@ const GetCategoryObj = (categoryName: string) => ({
 
 export default {
     title: 'Components/Accordion',
-    component: Accordion,
+    component: Accordion_memo,
     argTypes: {
         color: {
             control: 'color',
@@ -29,7 +30,7 @@ const names = [
 ]
 const callBack = action('accordion mode change event fired')
 const onClickCallBack = action('Some item was clicked')
-const Template: Story<AccPropsType> = args => <Accordion {...args} />;
+const Template: Story<AccPropsType> = args => <Accordion_memo {...args} />;
 
 const callBackProps = {
     onChange: callBack,
@@ -55,7 +56,7 @@ MenuUnCollapsedMode.args = {
 export const ModeChanging: Story<AccPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true)
 
-    return <Accordion {...args}
+    return <Accordion_memo {...args}
                       collapsed={value}
                       onChange={() => setValue(!value)}
                       names={names}

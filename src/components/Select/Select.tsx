@@ -2,24 +2,29 @@ import React, { useState, KeyboardEvent, useEffect} from 'react';
 import s from './Select.module.css';
 
 export type SelectPropsType = {
-    value: any
-    setValue: (value: any) => void
+    value?: any
+    setValue?: (value: any) => void
     items: { id: number, name: string }[]
     onClick: () => void
-    collapsed: boolean
-    setCollapsed: (value: boolean) => void
+    collapsed?: boolean
+    setCollapsed?: (value: boolean) => void
 }
 
 export function Select(props: SelectPropsType) {
+    console.log('SELECT RERENDER')
+
+    // const [collapsed, props.setCollapsed] = useState<boolean>(true)
+    // const [value, setValue] = useState<string>('')
+    const [hoverElementName, setHoverElementName] = useState(props.value)
 
     const onClickOptionHandler = (name: string) => {
-        props.setValue(name)
-        props.setCollapsed(!props.collapsed)
+        if (props.setValue) props.setValue(name)
+        if(props.setCollapsed) props.setCollapsed(!props.collapsed)
     }
     const onClickTitleHandler = (value: boolean) => {
-        props.setCollapsed(value)
+        if(props.setCollapsed) props.setCollapsed(value)
     }
-    const [hoverElementName, setHoverElementName] = useState(props.value)
+
     useEffect(() => {
         setHoverElementName(props.value)
     }, [props.value])
@@ -30,18 +35,18 @@ export function Select(props: SelectPropsType) {
                 if (props.items[i].name === hoverElementName) {
                     const pretendentElement= e.key === 'ArrowDown'? props.items[i + 1]: props.items[i - 1]
                     if (pretendentElement) {
-                        props.setValue(pretendentElement.name) //NOT WORKING
+                        if (props.setValue) props.setValue(pretendentElement.name) //NOT WORKING
                         break;
                     }
                 }
             }
         }
         if (e.key === 'Enter' || e.key==='Escape') {
-            props.setValue(hoverElementName)
-            props.setCollapsed(!props.collapsed)
+            if(props.setValue) props.setValue(hoverElementName)
+            if(props.setCollapsed) props.setCollapsed(!props.collapsed)
         }
         if (props.collapsed && e.key === 'Enter' ) {
-            props.setCollapsed(!props.collapsed)
+            if(props.setCollapsed) props.setCollapsed(!props.collapsed)
         }
     }
 
@@ -67,3 +72,4 @@ export function Select(props: SelectPropsType) {
         </div>
     )
 }
+export const Select_memo=React.memo(Select)

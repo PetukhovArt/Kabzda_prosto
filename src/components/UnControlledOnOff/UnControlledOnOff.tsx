@@ -66,6 +66,7 @@ export function UnControlledOnOff(props: PropsType) {
         </>
     )
 }
+export const UnControlledOnOff_memo=React.memo(UnControlledOnOff)
 
 
 

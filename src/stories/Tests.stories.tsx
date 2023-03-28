@@ -4,7 +4,7 @@ import {ComponentStory, ComponentMeta} from '@storybook/react';
 import {selectOptions} from '@testing-library/user-event/dist/select-options';
 
 export default {
-    title: 'tests',
+    title: 'Tests/input_select',
     // component: UnControlledRating,
 }
 
