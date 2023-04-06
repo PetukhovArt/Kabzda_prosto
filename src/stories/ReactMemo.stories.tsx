@@ -16,7 +16,7 @@ const UsersList = (props: { users: Array<string> }) => {
         )}
     </div>
 }
-const Users = React.memo(UsersList) // adds NO rerender for Table, if no changes in state/props (optimization)
+const Users = React.memo(UsersList) // adds NO rerender for UsersList, if no changes in state/props (optimization)
 
 export const Example1 = () => {
     const [counter, setCounter]=useState(1)
