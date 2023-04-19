@@ -7,7 +7,7 @@ export default {
 export const Example1 = () => {
     const [fake, setFake] = useState(1)
     const [count, setCount] = useState(1)
-    console.log('example')
+    console.log('example1')
 
 
     useEffect(() => {
@@ -34,7 +34,6 @@ export const Example1 = () => {
 export const SetTimeoutExample = () => {
     const [fake, setFake] = useState(1)
     const [count, setCount] = useState(1)
-    const [now, setNow]=useState(new Date())
     // console.log('Example Render')
 
     // useEffect(() => {
@@ -51,12 +50,6 @@ export const SetTimeoutExample = () => {
     //         setCount((state)=> state+1)
     //     }, 1000)
     // }, [])
-    let time=`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
-    useEffect(() => {
-        setInterval(()=>{
-            setNow(new Date())
-        }, 1000)
-    }, [])
 
 
     return <>
@@ -65,6 +58,5 @@ export const SetTimeoutExample = () => {
         fake : {fake} <br/>
         <button onClick={() => setFake(fake + 1)}>fake+</button>
         <button onClick={() => setCount(count + 1)}>count+</button> <br/>
-        TIME: {time}
     </>
 }
